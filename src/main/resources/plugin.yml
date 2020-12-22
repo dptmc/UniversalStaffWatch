@@ -1,6 +1,16 @@
-name: PluginName
+name: UniversalStaffWatch
 version: @version@-@apiversion@
-description: An empty plugin for Spigot with Maven
-authors: [ DartPower, AnotherContributorName ]
-website: https://github.com/dptmc/DPT-PluginRepoTemplate
-main: io.dpteam.PluginName.Main
+author: DartPower
+website: https://github.com/dptmc/UniversalStaffWatch
+main: io.dpteam.UniversalStaffWatch.Main
+commands:
+  watch:
+    description: Watch a player
+    usage: |
+      Usage:
+      /<command> [player] - Watch a player
+  unwatch:
+    description: Stop watching a player
+    usage: |
+      Usage:
+      /<command> - Stop watching a player

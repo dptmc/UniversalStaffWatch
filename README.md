@@ -1,4 +1,5 @@
-# DPT-PluginRepoTemplate
-DPT Specific Plugins for Bukkit-based plugin template
+# UniversalStaffWatch
 
-![Build](https://github.com/dptmc/DPT-PluginRepoTemplate/workflows/Build/badge.svg)
+UniversalStaffWatch
+
+![Build](https://github.com/dptmc/UniversalStaffWatch/workflows/Build/badge.svg)
