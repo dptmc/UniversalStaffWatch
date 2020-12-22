@@ -3,6 +3,7 @@ version: @version@-@apiversion@
 author: DartPower
 website: https://github.com/dptmc/UniversalStaffWatch
 main: io.dpteam.UniversalStaffWatch.Main
+api-version: 1.13
 commands:
   watch:
     description: Watch a player

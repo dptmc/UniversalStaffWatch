@@ -11,9 +11,9 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class CommandWatch implements CommandExecutor {
-   UniversalStaffWatch plugin;
+   Main plugin;
 
-   public CommandWatch(UniversalStaffWatch plugin) {
+   public CommandWatch(Main plugin) {
       super();
       this.plugin = plugin;
    }
@@ -21,9 +21,9 @@ public class CommandWatch implements CommandExecutor {
    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
       if (sender instanceof Player) {
          if (sender.hasPermission("rswatch.watch")) {
-            UniversalStaffWatch.watchConfig.set("watching." + sender.getName(), false);
+            Main.watchConfig.set("watching." + sender.getName(), false);
             Player player = (Player)sender;
-            boolean watching = UniversalStaffWatch.watchConfig.getBoolean("watching." + sender.getName());
+            boolean watching = Main.watchConfig.getBoolean("watching." + sender.getName());
             if (!watching) {
                if (args.length == 1) {
                   Player target = Bukkit.getPlayer(args[0]);
@@ -35,19 +35,19 @@ public class CommandWatch implements CommandExecutor {
                      int returnPosY = returnPos.getBlockY();
                      int returnPosZ = returnPos.getBlockZ();
                      String returnWorld = returnPos.getWorld().getName();
-                     UniversalStaffWatch.watchConfig.set(sender.getName() + ".watching", target.getName());
-                     UniversalStaffWatch.watchConfig.set(sender.getName() + ".returnLocation.X", returnPosX);
-                     UniversalStaffWatch.watchConfig.set(sender.getName() + ".returnLocation.Y", returnPosY);
-                     UniversalStaffWatch.watchConfig.set(sender.getName() + ".returnLocation.Z", returnPosZ);
-                     UniversalStaffWatch.watchConfig.set(sender.getName() + ".returnLocation.world", returnWorld);
-                     UniversalStaffWatch.watchConfig.set(sender.getName() + ".returnGameMode", returnGm.getValue());
+                     Main.watchConfig.set(sender.getName() + ".watching", target.getName());
+                     Main.watchConfig.set(sender.getName() + ".returnLocation.X", returnPosX);
+                     Main.watchConfig.set(sender.getName() + ".returnLocation.Y", returnPosY);
+                     Main.watchConfig.set(sender.getName() + ".returnLocation.Z", returnPosZ);
+                     Main.watchConfig.set(sender.getName() + ".returnLocation.world", returnWorld);
+                     Main.watchConfig.set(sender.getName() + ".returnGameMode", returnGm.getValue());
                      this.plugin.saveConfig();
                      if (player.isInsideVehicle()) {
                         player.leaveVehicle();
                      }
 
-                     UniversalStaffWatch.watchConfig.set("watching." + sender.getName(), true);
-                     UniversalStaffWatch.watchConfig.set(target.getName() + ".watched", true);
+                     Main.watchConfig.set("watching." + sender.getName(), true);
+                     Main.watchConfig.set(target.getName() + ".watched", true);
                      player.setCanPickupItems(false);
                      player.setAllowFlight(true);
                      player.setFlying(true);

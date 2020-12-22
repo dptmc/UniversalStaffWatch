@@ -12,24 +12,24 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class CommandUnwatch implements CommandExecutor {
-   UniversalStaffWatch plugin;
+   Main plugin;
 
-   public CommandUnwatch(UniversalStaffWatch plugin) {
+   public CommandUnwatch(Main plugin) {
       super();
       this.plugin = plugin;
    }
 
    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
       Player player = (Player)sender;
-      boolean watching = UniversalStaffWatch.watchConfig.getBoolean("watching." + sender.getName());
+      boolean watching = Main.watchConfig.getBoolean("watching." + sender.getName());
       Server server = player.getServer();
       if (sender instanceof Player) {
          if (sender.hasPermission("rswatch.unwatch")) {
             if (watching) {
-               int returnPosX = UniversalStaffWatch.watchConfig.getInt(sender.getName() + ".returnLocation.X");
-               int returnPosY = UniversalStaffWatch.watchConfig.getInt(sender.getName() + ".returnLocation.Y");
-               int returnPosZ = UniversalStaffWatch.watchConfig.getInt(sender.getName() + ".returnLocation.Z");
-               World returnWorld = server.getWorld(UniversalStaffWatch.watchConfig.getString(sender.getName() + ".returnLocation.world"));
+               int returnPosX = Main.watchConfig.getInt(sender.getName() + ".returnLocation.X");
+               int returnPosY = Main.watchConfig.getInt(sender.getName() + ".returnLocation.Y");
+               int returnPosZ = Main.watchConfig.getInt(sender.getName() + ".returnLocation.Z");
+               World returnWorld = server.getWorld(Main.watchConfig.getString(sender.getName() + ".returnLocation.world"));
                player.setCanPickupItems(true);
                player.setFlying(false);
                player.setAllowFlight(false);
@@ -37,9 +37,9 @@ public class CommandUnwatch implements CommandExecutor {
                Location returnPos = new Location(returnWorld, (double)returnPosX, (double)returnPosY, (double)returnPosZ);
                returnPos.setWorld(returnWorld);
                player.teleport(returnPos);
-               int gameMode = UniversalStaffWatch.watchConfig.getInt(sender.getName() + ".returnGameMode");
+               int gameMode = Main.watchConfig.getInt(sender.getName() + ".returnGameMode");
                player.setGameMode(GameMode.getByValue(gameMode));
-               UniversalStaffWatch.watchConfig.set("watching." + sender.getName(), false);
+               Main.watchConfig.set("watching." + sender.getName(), false);
                this.plugin.saveConfig();
                return true;
             } else {
