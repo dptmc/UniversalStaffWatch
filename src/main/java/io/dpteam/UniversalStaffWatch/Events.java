@@ -21,7 +21,7 @@ public class Events implements Listener {
    )
    public void onBlockPlace(BlockPlaceEvent event) {
       Player player = event.getPlayer();
-      if (UniversalStaffWatch.watchConfig.getBoolean("watching." + player.getName())) {
+      if (Main.watchConfig.getBoolean("watching." + player.getName())) {
          event.setCancelled(true);
       }
 
@@ -32,7 +32,7 @@ public class Events implements Listener {
    )
    public void onBlockBreak(BlockBreakEvent event) {
       Player player = event.getPlayer();
-      if (UniversalStaffWatch.watchConfig.getBoolean("watching." + player.getName())) {
+      if (Main.watchConfig.getBoolean("watching." + player.getName())) {
          event.setCancelled(true);
       }
 
@@ -43,7 +43,7 @@ public class Events implements Listener {
    )
    public void onDropItem(PlayerDropItemEvent event) {
       Player player = event.getPlayer();
-      if (UniversalStaffWatch.watchConfig.getBoolean("watching." + player.getName())) {
+      if (Main.watchConfig.getBoolean("watching." + player.getName())) {
          event.setCancelled(true);
       }
 
@@ -55,7 +55,7 @@ public class Events implements Listener {
    public void onPlayerDamage(EntityDamageEvent event) {
       if (event.getEntity() instanceof Player) {
          Player player = (Player)event.getEntity();
-         if (UniversalStaffWatch.watchConfig.getBoolean("watching." + player.getName())) {
+         if (Main.watchConfig.getBoolean("watching." + player.getName())) {
             event.setCancelled(true);
          }
       }
@@ -67,7 +67,7 @@ public class Events implements Listener {
    )
    public void onEntityTarget(EntityTargetEvent event) {
       Player player = (Player)event.getTarget();
-      if (UniversalStaffWatch.watchConfig.getBoolean("watching." + player.getName())) {
+      if (Main.watchConfig.getBoolean("watching." + player.getName())) {
          event.setCancelled(true);
       }
 
@@ -80,7 +80,7 @@ public class Events implements Listener {
       if (event.getEntity() instanceof Player && event.getDamager() instanceof Player) {
          Player damager = (Player)event.getDamager();
          Player player = (Player)event.getEntity();
-         if (UniversalStaffWatch.watchConfig.getString(damager.getName() + ".watching") == player.getName()) {
+         if (Main.watchConfig.getString(damager.getName() + ".watching") == player.getName()) {
             event.setCancelled(true);
          }
       }
