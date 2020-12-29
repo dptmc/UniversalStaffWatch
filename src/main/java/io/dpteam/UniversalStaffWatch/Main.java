@@ -47,12 +47,12 @@ public class Main extends JavaPlugin {
 			watchConfig.load(configFile);
 		} catch (Exception var2) {
 		}
-		Bukkit.getServer().getLogger().info("[DPT.MC] UniversalStaffWatch Enabled");
+		this.getServer().getLogger().info("[UniversalStaffWatch] Plugin Enabled");
 	}
 
 	public void onDisable() {
 		this.saveConfig();
-		Bukkit.getServer().getLogger().info("[DPT.MC] UniversalStaffWatch Disabled");
+		this.getServer().getLogger().info("[UniversalStaffWatch] Plugin Disabled");
 	}
 
 	public void saveConfig() {
