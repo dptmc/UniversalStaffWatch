@@ -47,12 +47,12 @@ public class Main extends JavaPlugin {
 			watchConfig.load(configFile);
 		} catch (Exception var2) {
 		}
-		this.getServer().getLogger().info("[UniversalStaffWatch] Plugin Enabled");
+		this.getServer().getLogger().info("[UniversalStaffWatch] Plugin loaded and enabled");
 	}
 
 	public void onDisable() {
 		this.saveConfig();
-		this.getServer().getLogger().info("[UniversalStaffWatch] Plugin Disabled");
+		this.getServer().getLogger().info("[UniversalStaffWatch] Plugin loaded and enabled");
 	}
 
 	public void saveConfig() {
